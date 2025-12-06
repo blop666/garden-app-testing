@@ -16,7 +16,7 @@ export function generateRecommendations(data: SensorData): Recommendation {
     statusColor = 'red';
   } else if (data.moisture < 40) {
     recs.push('⚠️ Soil moisture is low. Consider watering soon.');
-    if (urgency !== 'critical') urgency = 'warning';
+    // if (urgency !== 'critical') urgency = 'normal';
   }
 
   if (data.temperature > 35) {
