@@ -1,0 +1,25 @@
+/* app/chat-fix.css */
+
+/* Force chat widget to front */
+div[id*="recomi"],
+div[class*="recomi"],
+iframe[id*="recomi"] {
+  z-index: 999999 !important;
+  pointer-events: auto !important;
+}
+
+/* Make sure nothing blocks the chat */
+.chat-widget-container {
+  position: fixed !important;
+  z-index: 999999 !important;
+  pointer-events: auto !important;
+}
+
+/* Fix for common issues */
+* {
+  pointer-events: auto;
+}
+
+body > div:last-child {
+  z-index: 999999 !important;
+}
