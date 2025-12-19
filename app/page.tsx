@@ -7,6 +7,8 @@ import { getLatestData, isDemoMode } from '@/lib/thingspeak';
 import { generateRecommendations } from '@/lib/recommendation';
 import { formatTimestamp } from '@/lib/utils';
 import { SensorData, Recommendation } from '@/types';
+import { getDiseaseInfo } from '../lib/diseaseMap';
+
 
 import LoadingSpinner from '@/components/UI/LoadingSpinner';
 import DemoBanner from '@/components/UI/DemoBanner';
@@ -15,7 +17,7 @@ import Footer from '@/components/layout/Footer';
 import PlantCard from '@/components/dashboard/PlantCard';
 import MetricsGrid from '@/components/dashboard/MetricsGrid';
 import RecommendationsCard from '@/components/dashboard/RecomendationCard';
-import WaterButton from '@/components/dashboard/WaterButton';
+// import WaterButton from '@/components/dashboard/WaterButton';
 
 export default function Dashboard() {
   const [sensorData, setSensorData] = useState<SensorData | null>(null);
@@ -30,6 +32,8 @@ export default function Dashboard() {
     if (data) {
       setSensorData(data);
       setLastUpdate(formatTimestamp(data.timestamp));
+      const diseaseInfo = getDiseaseInfo(data.diseaseCode || 0);
+
       
       const recs = generateRecommendations(data);
       setRecommendations(recs);
@@ -40,7 +44,8 @@ export default function Dashboard() {
 
   useEffect(() => {
     // Check if demo mode is active
-    setDemoMode(isDemoMode());
+    setDemoMode(typeof window !== 'undefined' && 
+                process.env.NEXT_PUBLIC_DEMO_MODE === 'true');;
     
     // Fetch initial data
     fetchData();
@@ -69,9 +74,9 @@ export default function Dashboard() {
         
         <MetricsGrid data={sensorData} />
         
-        <RecommendationsCard recommendations={recommendations} />
+        <RecommendationsCard recommendations={recommendations} sensorData={sensorData} />
         
-        <WaterButton onWaterSuccess={fetchData} />
+        {/* <WaterButton onWaterSuccess={fetchData} /> */}
         
         <Footer />
       </div>
