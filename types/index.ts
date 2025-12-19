@@ -11,7 +11,6 @@ export interface SensorData {
 
 export interface SensorDataWithDisease extends SensorData {
   diseaseName: string;
-  diseaseInfo: typeof DISEASE_CODES[number];
 }
 
 export interface Recommendation {
@@ -28,30 +27,4 @@ export interface ThingSpeakConfig {
 }
 
 
-// For AI in bottom
 
-export type MessageRole = "user" | "model"
-
-export interface MessagePart {
-  text: string
-}
-
-export interface Message {
-  role: MessageRole;
-  parts: MessagePart[];
-}
-
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface ChatHistory extends Array<Message>{};
-
-export interface GerationConfig {
-    temperature: number;
-    topP: number;
-    responseMimeType: string;
-}
-
-export interface ChatSettings {
-  temperature: number;
-  model: string;
-  systemInstruction: string;
-}

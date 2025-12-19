@@ -14,6 +14,7 @@ export function generateMockData(): SensorData {
     humidity: 55,
     healthStatus: 1,
     healthScore: 95,
+    diseaseCode: 2,
   };
 
   // Add random variation (±5%)
@@ -26,7 +27,8 @@ export function generateMockData(): SensorData {
     moisture: addVariation(baseData.moisture, 10),
     temperature: addVariation(baseData.temperature, 3),
     humidity: addVariation(baseData.humidity, 8),
-    healthStatus: baseData.healthStatus,
+    healthStatus: baseData.diseaseCode,
+    diseaseCode: baseData.healthStatus,
     healthScore: addVariation(baseData.healthScore, 5),
     timestamp: new Date().toISOString(),
   };
