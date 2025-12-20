@@ -1,6 +1,6 @@
 // components/dashboard/MetricsGrid.tsx
 
-import { Droplets, Thermometer, Wind, Heart } from 'lucide-react';
+import { Droplets, Thermometer, Wind, Heart, HandFist } from 'lucide-react';
 import MetricCard from './MetricCard';
 import { SensorData } from '@/types';
 
@@ -30,7 +30,7 @@ export default function MetricsGrid({ data }: MetricsGridProps) {
         color="cyan"
       />
       <MetricCard
-        icon={Heart}
+        icon={HandFist}
         value={`${data.healthScore.toFixed(0)}`}
         label="Confident"
         color="red"
