@@ -13,7 +13,7 @@ const ChatAgent = () => {
     const onLoad = () => {
       const script = document.createElement("script");
       script.src = `${RECOMI_DOMAIN}/RecomiSDK.umd.cjs`;
-      
+        
       // *** This ensures the attributes are set EXACTLY as required ***
       script.setAttribute("agentId", RECOMI_AGENT_ID); 
       script.setAttribute("domain", RECOMI_DOMAIN);
