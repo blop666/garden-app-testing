@@ -40,7 +40,7 @@ export async function getLatestData(): Promise<SensorData | null> {
       moisture: parseFloat(data.field6 || '0'),
       temperature: parseFloat(data.field7 || '0'),
       humidity: parseFloat(data.field8 || '0'),
-      healthStatus: parseInt(data.field5 || '0'),
+      healthStatus: parseInt(data.field3 || '0'),
       healthScore: parseFloat(data.field2 || '0'),
       diseaseCode: parseInt(data.field1 || '0'),
       timestamp: data.created_at || '',
