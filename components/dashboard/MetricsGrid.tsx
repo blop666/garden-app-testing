@@ -32,7 +32,7 @@ export default function MetricsGrid({ data }: MetricsGridProps) {
       <MetricCard
         icon={Heart}
         value={`${data.healthScore.toFixed(0)}`}
-        label="Health Score"
+        label="Confident"
         color="red"
       />
     </div>
