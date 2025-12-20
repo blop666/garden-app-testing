@@ -40,8 +40,8 @@ export async function getLatestData(): Promise<SensorData | null> {
       moisture: parseFloat(data.field6 || '0'),
       temperature: parseFloat(data.field7 || '0'),
       humidity: parseFloat(data.field8 || '0'),
-      healthStatus: parseInt(data.field3 || '0'),
-      healthScore: parseFloat(data.field2 || '0'),
+      healthStatus: parseInt(data.field4 || '0'),
+      healthScore: parseFloat(data.field3 || '0'),
       diseaseCode: parseInt(data.field1 || '0'),
       timestamp: data.created_at || '',
     };
@@ -55,22 +55,22 @@ export async function getLatestData(): Promise<SensorData | null> {
  * Send water command
  * Simulates command if in demo mode, otherwise calls ThingSpeak API
  */
-export async function sendWaterCommand(): Promise<boolean> {
-  // DEMO MODE: Simulate command
-  if (DEMO_MODE) {
-    return mockSendWaterCommand();
-  }
+// export async function sendWaterCommand(): Promise<boolean> {
+//   // DEMO MODE: Simulate command
+//   if (DEMO_MODE) {
+//     return mockSendWaterCommand();
+//   }
 
-  // PRODUCTION MODE: Send real command
-  try {
-    const url = `https://api.thingspeak.com/update?api_key=${config.writeApiKey}&field6=1`;
-    const response = await fetch(url);
-    return response.ok;
-  } catch (error) {
-    console.error('Error sending water command:', error);
-    return false;
-  }
-}
+//   // PRODUCTION MODE: Send real command
+//   try {
+//     const url = `https://api.thingspeak.com/update?api_key=${config.writeApiKey}&field6=1`;
+//     const response = await fetch(url);
+//     return response.ok;
+//   } catch (error) {
+//     console.error('Error sending water command:', error);
+//     return false;
+//   }
+// }
 
 /**
  * Check if currently in demo mode
